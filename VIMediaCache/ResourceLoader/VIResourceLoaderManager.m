@@ -62,8 +62,9 @@ static NSString *kCacheScheme = @"__VIMediaCache___:";
 }
 
 - (void)resourceLoader:(AVAssetResourceLoader *)resourceLoader didCancelLoadingRequest:(AVAssetResourceLoadingRequest *)loadingRequest {
-    VIResourceLoader *loader = [self loaderForRequest:loadingRequest];
-    [loader removeRequest:loadingRequest];
+    //fixbug:第一次id=4时会触发cancel，导致无法播放，不取消就可以播放
+//    VIResourceLoader *loader = [self loaderForRequest:loadingRequest];
+//    [loader removeRequest:loadingRequest];
 }
 
 #pragma mark - VIResourceLoaderDelegate
